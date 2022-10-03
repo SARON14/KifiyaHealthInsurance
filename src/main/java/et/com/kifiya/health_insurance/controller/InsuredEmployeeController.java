@@ -82,10 +82,10 @@ public class InsuredEmployeeController {
     @GetMapping("/all")
     @Operation(summary = "sorting orders must be sent as 'asc' and 'desc'. and sorting parameters" +
             "are InsuredEmployee model field names. and the first page is page zero")
-    public ResponseEntity<Page<InsuredEmployee>> getAllLessorReports(@RequestParam("page") int page,
-                                                                     @RequestParam("size") int size,
-                                                                     @RequestParam("sortingParameter") String param,
-                                                                     @RequestParam("sortingOrder") String order) {
+    public ResponseEntity<Page<InsuredEmployee>> getAllLessorReports(@RequestParam(value = "page", defaultValue = "0") int page,
+                                                                     @RequestParam(value = "size",defaultValue = "10") int size,
+                                                                     @RequestParam(value = "sortingParameter",defaultValue = "id") String param,
+                                                                     @RequestParam(value = "sortingOrder",defaultValue = "asc") String order) {
         return insuredEmployeeService.getAll(page, size, param, order);
     }
 
